@@ -2,4 +2,4 @@
 
 A project simulating a simple civilization.
 
-Written in Python.
+Written mainly in Python.
