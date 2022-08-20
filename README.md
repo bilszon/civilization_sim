@@ -1,4 +1,4 @@
-# Civilization sim
+# Civilization_sim
 
 A project simulating a simple civilization.
 
