@@ -1,3 +1,4 @@
 TODO: Create the most basic core of the engine
 TODO: Create function to simulate a day
 TODO: Define a human class
+TODO: Create style guide
