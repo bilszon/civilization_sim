@@ -1,1 +1,7 @@
 Style guide for filenames, code etc.
+
+1. Filenames:
+
+2. File structure:
+
+3. Python code:
