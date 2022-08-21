@@ -1,16 +1,18 @@
 """Core - main engine of the sim."""
 
 import window_creator
+import graphic_engine
 
 class Core():
     """Class being the backbone of the simulation.
 
-    Manages logic updates, graphical updates etc.
+    Manages logic updates, graphic updates etc.
     """
     def __init__(self):
         """Create and setup the simulation
         """
         self.simulation_window = window_creator.SimulationWindow(800, 600)
+        self.graphic_engine = graphic_engine.GraphicEngine(self.simulation_window)
     
     def begin_simulation(self) -> None:
         """Begin the simulation and enter the update loop.
@@ -25,7 +27,8 @@ class Core():
         """
 
         #TODO: Logic update.
-        #TODO: Graphic update.
+
+        self.graphic_engine.graphic_update()
 
         self.simulation_window.window.after(10, self._main_loop)
 
