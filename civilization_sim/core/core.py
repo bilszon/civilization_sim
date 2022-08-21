@@ -15,10 +15,21 @@ class Core():
     def begin_simulation(self) -> None:
         """Begin the simulation and enter the update loop.
         """
+        self.simulation_window.window.after(0, self._main_loop)
+
         # Enter the main loop and lock this thread's execution permanently.
         self.simulation_window.mainloop()
 
-    def simulate_single_day(self):
+    def _main_loop(self) -> None:
+        """Main loop of the simulation. Repeatedly calls graphical updates, logic updates etc. Locks.
+        """
+
+        #TODO: Logic update.
+        #TODO: Graphic update.
+
+        self.simulation_window.window.after(10, self._main_loop)
+
+    def _simulate_single_day(self):
         pass
 
 def main():
