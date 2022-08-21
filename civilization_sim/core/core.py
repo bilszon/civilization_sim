@@ -1,6 +1,8 @@
-# Core - main engine of the sim.
+"""Core - main engine of the sim."""
 
 import window_creator
+
+
 
 def setup():
     simulation_window = window_creator.simulation_window(800, 600)
