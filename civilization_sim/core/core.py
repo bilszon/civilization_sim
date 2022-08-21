@@ -1,9 +1,10 @@
 # Core - main engine of the sim.
 
-import canvas_creator
+import window_creator
 
 def setup():
-    canvas_creator.create_canvas(800, 600)
+    simulation_window = window_creator.simulation_window(800, 600)
+    simulation_window.mainloop()
 
 def simulate_single_day():
     pass
