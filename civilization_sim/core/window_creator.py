@@ -2,7 +2,7 @@
 
 import tkinter as tk
 
-class simulation_window():
+class SimulationWindow():
     """Class containing and creating game's window and its core components"""
 
     def __init__(self, width: int, height: int):
@@ -19,7 +19,7 @@ class simulation_window():
 
         self.image = tk.PhotoImage(width=width, height=height)
         self.canvas.create_image((width/2, height/2), image=self.image, state="normal")
-        
+
     def mainloop(self):
         """Calls the mainloop of the window. Locks.
         """
