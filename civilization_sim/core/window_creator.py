@@ -12,6 +12,9 @@ class SimulationWindow():
             width (int): The width of created window.
             height (int): The height of created window.
         """
+        self.width = width
+        self.height = height
+
         self.window = tk.Tk()
 
         self.canvas = tk.Canvas(self.window, width=width, height=height, bg = "#ffffff")

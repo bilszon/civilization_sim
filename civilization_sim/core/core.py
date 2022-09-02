@@ -11,7 +11,7 @@ class Core():
     def __init__(self):
         """Create and setup the simulation
         """
-        self.simulation_window = window_creator.SimulationWindow(800, 600)
+        self.simulation_window = window_creator.SimulationWindow(400, 300)
         self.graphic_engine = graphic_engine.GraphicEngine(self.simulation_window)
     
     def begin_simulation(self) -> None:
@@ -29,6 +29,8 @@ class Core():
         #TODO: Logic update.
 
         self.graphic_engine.graphic_update()
+
+        #self.graphic_engine.display_chunk()
 
         self.simulation_window.window.after(10, self._main_loop)
 
