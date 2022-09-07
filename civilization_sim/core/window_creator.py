@@ -12,6 +12,7 @@ class SimulationWindow():
             width (int): The width of created window.
             height (int): The height of created window.
         """
+
         self.width = width
         self.height = height
 
@@ -20,6 +21,7 @@ class SimulationWindow():
         self.canvas = tk.Canvas(self.window, width=width, height=height, bg = "#ffffff")
         self.canvas.pack()
 
+        # Create a background empty image to force window's width and height.
         self.image = tk.PhotoImage(width=width, height=height)
         self.canvas.create_image((width/2, height/2), image=self.image, state="normal")
 

@@ -13,18 +13,19 @@ class Chunk():
     def __init__(self):
         """Generate the chunk and all of the tiles within it.
         """
+        
         self.tiles = np.empty((self.CHUNK_SIZE, self.CHUNK_SIZE), dtype=tile.Tile)
         for r in range(self.CHUNK_SIZE):
             for c in range(self.CHUNK_SIZE):
                 self.tiles[r, c] = tile.Tile() #TODO: Generate proper tiles
 
     def RGB_array(self):
-        """Return an array of RGB values of chunk's tiles
+        """Return an array of RGB values of chunk's tiles. Each tile covers a 2x2 area, so it's 4 pixels.
         """
         
-        array = np.empty((self.CHUNK_SIZE, self.CHUNK_SIZE, 3), dtype=np.uint8)
-        for r in range(self.CHUNK_SIZE):
-            for c in range(self.CHUNK_SIZE):
-                array[r, c] = self.tiles[r, c].get_color()
+        array = np.empty((self.CHUNK_SIZE * 2, self.CHUNK_SIZE * 2, 3), dtype=np.uint8)
+        for r in range(self.CHUNK_SIZE * 2):
+            for c in range(self.CHUNK_SIZE * 2):
+                array[r, c] = self.tiles[r//2, c//2].get_color()
         
         return array
