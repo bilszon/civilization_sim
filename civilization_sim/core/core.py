@@ -1,7 +1,7 @@
 """Core - main engine of the sim."""
 
-import window_creator
-import graphic_engine
+from core import window_creator
+from core import graphic_engine
 
 class Core():
     """Class being the backbone of the simulation.

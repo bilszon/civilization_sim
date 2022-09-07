@@ -1,10 +1,12 @@
 """Graphic engine of the simulation. Executes all drawing on the canvas.
 """
 
-import window_creator
+from email.mime import image
+from . import window_creator
 import PIL
 import PIL.ImageTk
 import numpy as np
+from world_generation import chunk
 
 class GraphicEngine:
     """Engine managing drawing onscreen.
@@ -17,41 +19,20 @@ class GraphicEngine:
         """
         self.simulation_window = simulation_window
 
-        self.chunk = Chunk([255, 255, 0],[0, 255, 255])
+        self.chunk = chunk.Chunk()
+        
 
-        #self.simulation_window.canvas.create_image(128, 128, image=self.chunk.image)
-
+        self.img1 = self.RGB_to_Image(self.chunk.RGB_array())
+        self.simulation_window.canvas.create_image(128, 128, image=self.img1)
+        print("Wow")
     def graphic_update(self) -> None:
         """Redraw everything onscreen. A single frame of the simulation.
         """
-        
-        #print(self.chunk.image.width())
-
-    #def display_chunk(self):
-    #    self.simulation_window.canvas.create_image(128, 128, image=self.chunk)
-
-
-class Chunk():
-    def __init__(self, color1, color2):
-        chunkdata = np.zeros((64, 64, 3), dtype=np.uint8)
-
-        for i in range(64):
-            for j in range(64):
-                if i % 2 == 0:
-                    chunkdata[i][j] = color1
-                else:
-                    chunkdata[i][j] = color2
-
-
-        """ row1 = [color1] * 64
-        row2 = [color2] * 64
-        chunkdata = []
-        for i in range(32):
-            chunkdata.append(row1)
-            chunkdata.append(row2)
-        chunkdata = np.array(chunkdata)
-        print(chunkdata) """
-        image = PIL.Image.fromarray(chunkdata, mode="RGB")
-        self.image = PIL.ImageTk.PhotoImage(image)
-
+    
+    
+    def RGB_to_Image(self, RGB_array):
+        print(RGB_array)
+        image1 = PIL.Image.fromarray(RGB_array, mode="RGB")
+        self.simulation_window.canvas.create_image(128, 128, image=PIL.ImageTk.PhotoImage(image1))
+        return PIL.ImageTk.PhotoImage(image1)
 
