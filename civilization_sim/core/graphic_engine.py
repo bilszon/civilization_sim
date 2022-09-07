@@ -1,12 +1,11 @@
 """Graphic engine of the simulation. Executes all drawing on the canvas.
 """
 
-from email.mime import image
 from . import window_creator
 import PIL
 import PIL.ImageTk
 import numpy as np
-from world_generation import chunk
+from world_generation import chunk, chunk_manager
 
 class GraphicEngine:
     """Engine managing drawing onscreen.
@@ -19,20 +18,19 @@ class GraphicEngine:
         """
         self.simulation_window = simulation_window
 
-        self.chunk = chunk.Chunk()
+        self.chmng = chunk_manager.ChunkManager()
+    
+        self.simulation_window.canvas.create_image(128, 128, image=self.chmng.get_chunk_image(0, 0))
+        
         
 
-        self.img1 = self.RGB_to_Image(self.chunk.RGB_array())
-        self.simulation_window.canvas.create_image(128, 128, image=self.img1)
-        print("Wow")
+
     def graphic_update(self) -> None:
         """Redraw everything onscreen. A single frame of the simulation.
         """
     
     
-    def RGB_to_Image(self, RGB_array):
-        print(RGB_array)
+    def _RGB_to_Image(self, RGB_array):
         image1 = PIL.Image.fromarray(RGB_array, mode="RGB")
-        self.simulation_window.canvas.create_image(128, 128, image=PIL.ImageTk.PhotoImage(image1))
         return PIL.ImageTk.PhotoImage(image1)
 
