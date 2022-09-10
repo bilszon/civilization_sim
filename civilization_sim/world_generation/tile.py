@@ -12,7 +12,7 @@ class Tile():
 
         if rgb == None:
             R = x % 255
-            G = y % 255
+            G = y // 2 % 255
             B = 0
         else:
             R = rgb[0]

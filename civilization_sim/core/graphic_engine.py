@@ -45,7 +45,10 @@ class GraphicEngine:
         b_chunk = b_border // (Chunk.CHUNK_SIZE * 2) + 1
         t_chunk = t_border // (Chunk.CHUNK_SIZE * 2)
 
+        print(l_chunk)
+        print(b_chunk)
+
         for r in range(t_chunk, b_chunk + 1):
             for c in range(l_chunk, r_chunk + 1):
-                self.simulation_window.canvas.create_image(mid_point[0] + r * (Chunk.CHUNK_SIZE * 2) - self.camera_x, mid_point[1] + c * (Chunk.CHUNK_SIZE * 2) - self.camera_y, image=chunk_manager.ChunkManager.get_chunk_image(r, c))
+                self.simulation_window.canvas.create_image(mid_point[0] + c * (Chunk.CHUNK_SIZE * 2) - self.camera_x, mid_point[1] + r * (Chunk.CHUNK_SIZE * 2) - self.camera_y, image=chunk_manager.ChunkManager.get_chunk_image(c, r))
 

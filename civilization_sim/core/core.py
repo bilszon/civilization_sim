@@ -16,7 +16,7 @@ class Core():
         """Create and setup the simulation
         """
 
-        self.simulation_window = window_creator.SimulationWindow(800, 600)
+        self.simulation_window = window_creator.SimulationWindow(1600, 900)
         self.graphic_engine = graphic_engine.GraphicEngine(self.simulation_window)
 
         self.begin_time = time.time_ns()
