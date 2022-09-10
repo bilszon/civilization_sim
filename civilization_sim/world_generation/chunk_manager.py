@@ -26,7 +26,7 @@ class ChunkManager():
         """
 
         if (x,y) not in ChunkManager._chunks: # If chunk doesn't exist, generate it.
-            new_chunk = chunk.Chunk()
+            new_chunk = chunk.Chunk(x, y)
             ChunkManager._chunks[(x,y)] = {"chunk":new_chunk, "updated":False, "image":ChunkManager._RGB_to_Image(new_chunk.RGB_array())}
         
         ChunkManager._chunks[(x,y)]["updated"] = True #TODO: More accurate system to check if a chunk has been updated and needs to be rerendered. For now assume that it's modified anytime someone get's access to it.
@@ -45,7 +45,7 @@ class ChunkManager():
         """
 
         if (x,y) not in ChunkManager._chunks: # If chunk doesn't exist, generate it.
-            new_chunk = chunk.Chunk()
+            new_chunk = chunk.Chunk(x, y)
             ChunkManager._chunks[(x,y)] = {"chunk":new_chunk, "updated":False, "image":ChunkManager._RGB_to_Image(new_chunk.RGB_array())}
         else:
             if ChunkManager._chunks[(x,y)]["updated"]: # If chunk has been updated since last time it's image was accessed, rerender it. Otherwise just return cashed image.

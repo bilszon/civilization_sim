@@ -7,10 +7,17 @@ class Tile():
     """Class representing a single tile.
     """
 
-    def __init__(self):
-        R = random.randint(0, 255)
-        G = random.randint(0, 255)
-        B = random.randint(0, 255)
+
+    def __init__(self, x: int, y: int, rgb=None):
+
+        if rgb == None:
+            R = x % 255
+            G = y % 255
+            B = random.randint(0, 255)
+        else:
+            R = rgb[0]
+            G = rgb[1]
+            B = rgb[2]
         self.color = [R, G, B]  #TODO: Actual color processing
 
     def get_color(self):
