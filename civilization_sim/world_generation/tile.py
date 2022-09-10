@@ -13,7 +13,7 @@ class Tile():
         if rgb == None:
             R = x % 255
             G = y % 255
-            B = random.randint(0, 255)
+            B = 0
         else:
             R = rgb[0]
             G = rgb[1]

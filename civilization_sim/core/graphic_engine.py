@@ -27,9 +27,6 @@ class GraphicEngine:
         self.window_width = simulation_window.width
         self.window_height = simulation_window.height
 
-        #TESTLINE
-        self.simulation_window.canvas.create_image(128, 128, image=chunk_manager.ChunkManager.get_chunk_image(2, 5))
-
 
     def graphic_update(self) -> None:
         """Redraw everything onscreen. A single frame of the simulation.
@@ -48,14 +45,7 @@ class GraphicEngine:
         b_chunk = b_border // (Chunk.CHUNK_SIZE * 2) + 1
         t_chunk = t_border // (Chunk.CHUNK_SIZE * 2)
 
-        print()
-        print(l_chunk)
-        print(r_chunk)
-        print(b_chunk)
-        print(t_chunk)
-
         for r in range(t_chunk, b_chunk + 1):
             for c in range(l_chunk, r_chunk + 1):
                 self.simulation_window.canvas.create_image(mid_point[0] + r * (Chunk.CHUNK_SIZE * 2) - self.camera_x, mid_point[1] + c * (Chunk.CHUNK_SIZE * 2) - self.camera_y, image=chunk_manager.ChunkManager.get_chunk_image(r, c))
-        self.simulation_window.canvas.create_rectangle(mid_point[0] - 10, mid_point[1] - 10, mid_point[0] + 10, mid_point[1] + 10, activefill="black")
 
