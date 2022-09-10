@@ -51,6 +51,7 @@ class ChunkManager():
             if ChunkManager._chunks[(x,y)]["updated"]: # If chunk has been updated since last time it's image was accessed, rerender it. Otherwise just return cashed image.
                 ChunkManager._chunks[(x,y)]["image"] = ChunkManager._RGB_to_Image(ChunkManager._chunks[(x,y)]["chunk"].RGB_array())
                 ChunkManager._chunks[(x,y)]["updated"] = False # We have generated a new image and cashed it, so it is definitely up-to-date now.
+                print("Generating new chunk image for chunk (" + str(x) + ", " + str(y) + ").")
         
         return ChunkManager._chunks[(x,y)]["image"]
 

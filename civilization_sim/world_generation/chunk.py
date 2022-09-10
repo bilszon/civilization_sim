@@ -18,6 +18,8 @@ class Chunk():
             y (int): y (vertical) coordinate of the chunk (in chunk coords, not tile/world).
         """
         
+        print("Generating new chunk at (" + str(x) + ", " + str(y) + ").")
+
         self.x = x
         self.y = y
 
