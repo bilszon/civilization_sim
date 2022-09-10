@@ -1,6 +1,6 @@
 """ A single tile in the game's world."""
 
-import random #TEMP
+from core.randomizer import Randomizer
 
 
 class Tile():
@@ -10,10 +10,12 @@ class Tile():
 
     def __init__(self, x: int, y: int, rgb=None):
 
+        randomness = Randomizer.get_tile_randomness(x, y)
+
         if rgb == None:
-            R = x % 255
-            G = y // 2 % 255
-            B = 0
+            R = abs(x * 2 % 511 - 255)
+            G = abs(y * 2% 511 - 255)
+            B = randomness[0]
         else:
             R = rgb[0]
             G = rgb[1]

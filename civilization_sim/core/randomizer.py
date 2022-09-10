@@ -22,7 +22,7 @@ class Randomizer():
         Randomizer._randomizer_set = True
         Randomizer._seed = seed
 
-    def get_chunk_randomness(x: int, y: int) -> str:
+    def get_chunk_randomness(x: int, y: int) -> bytes:
         """Generates 256 bits of pseudo-random data used for chunk generation.
         For same seed and same (x, y) coordinates it gives the same data, so results can be reproduced.
 
@@ -31,7 +31,7 @@ class Randomizer():
             y (int): y (vertical) coordinate of the chunk (in chunk coords, not tile/world).
 
         Returns:
-            str: 256 bits of pseudo-randomness as hexadecimal.
+            bytes: 256 bits of pseudo-randomness as bytes.
         """
 
         if not Randomizer._randomizer_set:
@@ -42,7 +42,7 @@ class Randomizer():
         hash_base = str(Randomizer._seed) + Randomizer._GAME_SALT + Randomizer._CHUNK_SALT + chunk_string
         return sha256(hash_base.encode("utf-8")).digest()
 
-    def get_chunk_randomness(x: int, y: int) -> str:
+    def get_tile_randomness(x: int, y: int) -> bytes:
         """Generates 256 bits of pseudo-random data used for tile generation.
         For same seed and same (x, y) coordinates it gives the same data, so results can be reproduced.
 
@@ -51,7 +51,7 @@ class Randomizer():
             y (int): y (vertical) coordinate of the tile.
 
         Returns:
-            str: 256 bits of pseudo-randomness as hexadecimal.
+            bytes: 256 bits of pseudo-randomness as bytes.
         """
 
         if not Randomizer._randomizer_set:

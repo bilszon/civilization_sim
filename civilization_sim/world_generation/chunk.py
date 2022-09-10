@@ -30,8 +30,6 @@ class Chunk():
                 tile_x = x * Chunk.CHUNK_SIZE + c
                 if r == 0 or c == 0:
                     self.tiles[r, c] = tile.Tile(tile_x, tile_y, rgb=(0, 0, 0))
-                elif r == 63 or c == 63:
-                    self.tiles[r, c] = tile.Tile(tile_x, tile_y, rgb=(255, 255, 255))
                 else:
                     self.tiles[r, c] = tile.Tile(tile_x, tile_y) #TODO: Generate proper tiles
 
