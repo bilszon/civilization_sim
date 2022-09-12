@@ -3,6 +3,7 @@
 import time
 from core import window_creator, graphic_engine
 from core.framerate_counter import FramerateCounter
+from core.input_manager import InputManager
 
 class Core():
     """Class being the backbone of the simulation.
@@ -18,6 +19,8 @@ class Core():
 
         self.simulation_window = window_creator.SimulationWindow(1600, 900)
         self.graphic_engine = graphic_engine.GraphicEngine(self.simulation_window)
+
+        self.input_manager = InputManager(self.simulation_window)
 
         self.begin_time = time.time_ns()
     
@@ -40,6 +43,20 @@ class Core():
 
         self.graphic_engine.graphic_update()
 
+        # Camera movement
+        camera_speed = 10
+        dx = 0
+        dy = 0
+        if self.input_manager.isDown("w"):
+            dy -= camera_speed
+        if self.input_manager.isDown("a"):
+            dx -= camera_speed
+        if self.input_manager.isDown("s"):
+            dy += camera_speed
+        if self.input_manager.isDown("d"):
+            dx += camera_speed
+        self.move_camera(dx, dy)
+
         FramerateCounter.frame()
 
         # Wait for the next frame at least 1ms
@@ -50,6 +67,11 @@ class Core():
 
     def _simulate_single_day(self):
         pass
+
+    def move_camera(self, x: int, y: int) -> None:
+        self.graphic_engine.camera_x += x
+        self.graphic_engine.camera_y += y
+
 
 def main():
     core = Core()
