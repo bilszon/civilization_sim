@@ -2,6 +2,7 @@
 
 from pickletools import uint8
 import numpy as np
+
 from . import tile
 
 class Chunk():
@@ -9,6 +10,8 @@ class Chunk():
     """
 
     CHUNK_SIZE = 64 # Measured in tiles, square
+
+    TILE_SIZE = 1
 
     def __init__(self, x: int, y: int):
         """Generate the chunk and all of the tiles within it.
@@ -32,9 +35,9 @@ class Chunk():
         """Return an array of RGB values of chunk's tiles. Each tile covers a 2x2 area, so it's 4 pixels.
         """
         
-        array = np.empty((self.CHUNK_SIZE * 2, self.CHUNK_SIZE * 2, 3), dtype=np.uint8)
-        for r in range(self.CHUNK_SIZE * 2):
-            for c in range(self.CHUNK_SIZE * 2):
-                array[r, c] = self.tiles[r//2, c//2].get_color()
+        array = np.empty((self.CHUNK_SIZE * Chunk.TILE_SIZE, self.CHUNK_SIZE * Chunk.TILE_SIZE, 3), dtype=np.uint8)
+        for r in range(self.CHUNK_SIZE * Chunk.TILE_SIZE):
+            for c in range(self.CHUNK_SIZE * Chunk.TILE_SIZE):
+                array[r, c] = self.tiles[r//Chunk.TILE_SIZE, c//Chunk.TILE_SIZE].get_color()
         
         return array

@@ -3,6 +3,6 @@
 import core.core
 from core.randomizer import Randomizer
 
-Randomizer.set_seed("Development")
+Randomizer.set_seed("Development123")
 
 core.core.main()

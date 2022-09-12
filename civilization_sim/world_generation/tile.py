@@ -13,9 +13,31 @@ class Tile():
         randomness = Randomizer.get_tile_randomness(x, y)
 
         if rgb == None:
-            R = abs(x * 2 % 511 - 255)
-            G = abs(y * 2% 511 - 255)
-            B = randomness[0]
+            h = Randomizer.get_noise_at_point(x, y) + 10
+            if h < 0:
+                R = 0
+                G = 15
+                B = 255 + 4 * h
+            elif h == 0:
+                R = 100
+                G = 100
+                B = 255
+            elif h < 3:
+                R = 255
+                G = 255
+                B = 0
+            elif h < 20:
+                R = 0
+                G = 155 + 5 * h
+                B = 15
+            elif h == 20:
+                R = 127
+                G = 255
+                B = 127
+            else:
+                R = 255 - h
+                G = 255 - h
+                B = 255 - h
         else:
             R = rgb[0]
             G = rgb[1]
