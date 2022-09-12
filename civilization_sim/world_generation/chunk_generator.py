@@ -1,6 +1,8 @@
 from hashlib import sha256
 from random import Random
 
+from world_generation.chunk import Chunk
+
 class ChunkGenerator():
     seed = 0
 
@@ -31,3 +33,20 @@ class ChunkGenerator():
         chunk_string = str(x) + str(y)
         hash_base = str(ChunkGenerator.seed) + ChunkGenerator._GAME_SALT + chunk_string
         return sha256(hash_base.encode("utf-8")).hexdigest()
+
+    def generate_chunk(x: int, y: int) -> Chunk:
+        """Generates chunk at coordinates (x, y) and returns it.
+
+        Args:
+            x (int): x (horizontal) coordinate of the chunk (in chunk coords, not tile/world).
+            y (int): y (vertical) coordinate of the chunk (in chunk coords, not tile/world).
+
+        Returns:
+            Chunk: Newly generated chunk.
+        """
+
+        print("Generating new chunk at (" + str(x) + ", " + str(y) + ").")
+
+        new_chunk = Chunk(x, y)
+
+        return new_chunk

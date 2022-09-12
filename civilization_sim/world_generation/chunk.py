@@ -17,8 +17,6 @@ class Chunk():
             x (int): x (horizontal) coordinate of the chunk (in chunk coords, not tile/world).
             y (int): y (vertical) coordinate of the chunk (in chunk coords, not tile/world).
         """
-        
-        print("Generating new chunk at (" + str(x) + ", " + str(y) + ").")
 
         self.x = x
         self.y = y
@@ -28,10 +26,7 @@ class Chunk():
             tile_y = y * Chunk.CHUNK_SIZE + r
             for c in range(self.CHUNK_SIZE):
                 tile_x = x * Chunk.CHUNK_SIZE + c
-                if r == 0 or c == 0:
-                    self.tiles[r, c] = tile.Tile(tile_x, tile_y, rgb=(0, 0, 0))
-                else:
-                    self.tiles[r, c] = tile.Tile(tile_x, tile_y) #TODO: Generate proper tiles
+                self.tiles[r, c] = tile.Tile(tile_x, tile_y) #TODO: Generate proper tiles
 
     def RGB_array(self):
         """Return an array of RGB values of chunk's tiles. Each tile covers a 2x2 area, so it's 4 pixels.
